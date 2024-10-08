@@ -1,0 +1,43 @@
+﻿@page
+@model ContactManager.Pages.Contacts.DeleteModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<head>
+    <style>
+        body{
+            background-color: #E0E0E0;
+        }
+        .delete-container {
+            margin: 0 auto;
+            max-width: 600px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .btn-danger, .btn-secondary {
+            text-decoration: none;
+            padding: 10px 20px;
+            color: white;
+            border-radius: 3px;
+            margin: 10px;
+        }
+        .btn-danger {
+            background-color: #dc3545;
+        }
+        .btn-secondary {
+            background-color: #6c757d;
+        }
+    </style>
+</head>
+
+<h2>Eliminar Contacto</h2>
+
+<div class="delete-container">
+    <p>¿Está seguro que desea eliminar el contacto <strong>@Model.Contact.Name</strong>?</p>
+
+    <form method="post">
+        <button type="submit" class="btn-danger">Eliminar</button>
+        <a href="/Contacts" class="btn-secondary">Cancelar</a>
+    </form>
+</div>

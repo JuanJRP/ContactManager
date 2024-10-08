@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using MongoDB.Bson;
 using static ContactManager.Models.ContactModel;
 using static ContactManager.Services.ContactServices;
 
@@ -23,7 +24,7 @@ namespace ContactManager.Controllers
         }
 
         [HttpGet("{id}")]
-        public Task<Contact> Get(Int32 id)
+        public Task<Contact> Get(ObjectId id)
         {
             return _contactService.GetContactById(id);
         }
@@ -35,13 +36,13 @@ namespace ContactManager.Controllers
         }
 
         [HttpPut("{id}")]
-        public Task Put(Int32 id, [FromBody] Contact contact)
+        public Task Put(ObjectId id, [FromBody] Contact contact)
         {
             return _contactService.UpdateContact(id, contact);
         }
 
         [HttpDelete("{id}")]
-        public Task Delete(Int32 id)
+        public Task Delete(ObjectId id)
         {
             return _contactService.DeleteContact(id);
         }

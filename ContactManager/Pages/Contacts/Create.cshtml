@@ -1,0 +1,71 @@
+﻿@page
+@model ContactManager.Pages.Contacts.CreateModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<head>
+    <style>
+        body{
+            background-color: #E0E0E0;
+        }
+        .form-container {
+            margin: 0 auto;
+            max-width: 600px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+        }
+        .btn-primary {
+            text-decoration: none;
+            padding: 10px 20px;
+            color: white;
+            background-color: #007bff;
+            border-radius: 3px;
+        }
+
+        .btn-secondary {
+            text-decoration: none;
+            padding: 10px 20px;
+            color: white;
+            background-color: #dc3545;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+
+<h2>Agregar Nuevo Contacto</h2>
+
+<form method="post">
+    <div class="form-group">
+        <label asp-for="Contact.Name"></label>
+        <input asp-for="Contact.Name" class="form-control" />
+        <span asp-validation-for="Contact.Name" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Contact.Email"></label>
+        <input asp-for="Contact.Email" type="email" class="form-control" />
+        <span asp-validation-for="Contact.Email" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Contact.Phone"></label>
+        <input asp-for="Contact.Phone" type="number" class="form-control" />
+        <span asp-validation-for="Contact.Phone" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Agregar Contacto</button>
+    <a href="/Contacts" class="btn btn-secondary">Cancelar</a>
+</form>

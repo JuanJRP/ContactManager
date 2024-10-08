@@ -1,4 +1,5 @@
-﻿using static ContactManager.Interfaces.ContactInterface;
+﻿using MongoDB.Bson;
+using static ContactManager.Interfaces.ContactInterface;
 using static ContactManager.Models.ContactModel;
 
 namespace ContactManager.Services
@@ -19,7 +20,7 @@ namespace ContactManager.Services
                 return _contactRepository.GetContacts();
             }
 
-            public Task<Contact> GetContactById(Int32 id)
+            public Task<Contact> GetContactById(ObjectId id)
             {
                 return _contactRepository.GetContactById(id);
             }
@@ -29,12 +30,12 @@ namespace ContactManager.Services
                 return _contactRepository.CreateContact(contact);
             }
 
-            public Task UpdateContact(Int32 id, Contact contact)
+            public Task UpdateContact(ObjectId id, Contact contact)
             {
                 return _contactRepository.UpdateContact(id, contact);
             }
 
-            public Task DeleteContact(Int32 id)
+            public Task DeleteContact(ObjectId id)
             {
                 return _contactRepository.DeleteContact(id);
             }

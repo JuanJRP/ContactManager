@@ -1,0 +1,96 @@
+﻿@page
+@model ContactManager.Pages.Contacts.IndexModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<head>
+    <style>
+        body {
+            background-color: #E0E0E0;
+        }
+        h2 {
+            text-align: center;
+        }
+
+        .container {
+            margin: 0 auto;
+            max-width: 800px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #333;
+            color: white;
+        }
+
+        a {
+            text-decoration: none;
+            padding: 5px 10px;
+            margin: 0 5px;
+            color: white;
+            background-color: #007bff;
+            border-radius: 3px;
+        }
+
+        a.btn-warning {
+            background-color: #ffc107;
+        }
+
+        a.btn-danger {
+            background-color: #dc3545;
+        }
+
+        .actions {
+            display: flex;
+            justify-content: center;
+        }
+
+        .add-contact {
+            display: block;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<h2>Lista de Contactos</h2>
+
+<div class="container">
+    <div class="add-contact">
+        <a class="btn-primary" asp-page="./Create">Agregar Nuevo Contacto</a>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Email</th>
+                <th>Teléfono</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var contact in Model.Contacts)
+            {
+                <tr>
+                    <td>@contact.Name</td>
+                    <td>@contact.Email</td>
+                    <td>@contact.Phone</td>
+                    <td class="actions">
+                        <a class="btn-warning" asp-page="./Edit" asp-route-id="@contact.Id">Editar</a>
+                        <a class="btn-danger" asp-page="./Delete" asp-route-id="@contact.Id">Eliminar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -7,17 +7,11 @@ namespace ContactManager.Models
     {
         public class Contact
         {
-            [BsonId]
-            [BsonRepresentation(BsonType.Int32)]
-            public int Id { get; set; }
+            [BsonId] 
+            public ObjectId Id { get; set; } = ObjectId.GenerateNewId(); 
 
-            [BsonElement("Name")]
             public string Name { get; set; }
-
-            [BsonElement("Email")]
             public string Email { get; set; }
-
-            [BsonElement("Phone")]
             public string Phone { get; set; }
         }
     }
